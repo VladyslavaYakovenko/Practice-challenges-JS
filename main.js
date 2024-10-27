@@ -14,6 +14,7 @@ import sortIt from "./10.sort-unsortable.js";
 import hasHiddenFee from "./11.no-hidden-fees.js";
 import trace from "./12.trace-that-matrix.js";
 import removeSpecialCharacters from "./13.remove-special-characters.js";
+import mathExpr from "./14.check-if-string-is-math-expression.js";
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
@@ -149,4 +150,11 @@ console.log("14. Check if a String is a Mathematical Expression (use RegExp");
 console.log(mathExpr("4 + 5"));
 console.log(mathExpr("4*6"));
 console.log(mathExpr("4*no"));
+
+// 15. Pentagonal Number
+console.log("15. Pentagonal Number");
+console.log(pentagonal(1));
+console.log(pentagonal(2));
+console.log(pentagonal(3));
+console.log(pentagonal(8));
 
