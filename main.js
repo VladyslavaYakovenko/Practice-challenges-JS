@@ -12,6 +12,7 @@ import keysAndValues from "./8.objects-keys-and-values.js";
 import ascDesNone from "./9.lets-sort-tihs-array.js";
 import sortIt from "./10.sort-unsortable.js";
 import hasHiddenFee from "./11.no-hidden-fees.js";
+import trace from "./12.trace-that-matrix.js";
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
@@ -111,4 +112,28 @@ console.log("11. No Hidden Fees");
 console.log(hasHiddenFee(["$2", "$4", "$1", "$8"], "$15"));
 console.log(hasHiddenFee(["$1", "$2", "$3"], "$6"));
 console.log(hasHiddenFee(["$1"], "$4"));
+
+// 12. Trace That Matrix
+console.log("12. Trace That Matrix");
+console.log(
+  trace([
+    [1, 4],
+    [4, 1],
+  ])
+);
+console.log(
+  trace([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ])
+);
+console.log(
+  trace([
+    [1, 0, 1, 0],
+    [0, 2, 0, 2],
+    [3, 0, 3, 0],
+    [0, 4, 0, 4],
+  ])
+);
 
