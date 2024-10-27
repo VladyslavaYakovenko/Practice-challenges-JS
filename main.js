@@ -11,6 +11,7 @@ import Calculator from "./7.simple-oop-calculator.js";
 import keysAndValues from "./8.objects-keys-and-values.js";
 import ascDesNone from "./9.lets-sort-tihs-array.js";
 import sortIt from "./10.sort-unsortable.js";
+import hasHiddenFee from "./11.no-hidden-fees.js";
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
@@ -104,4 +105,10 @@ console.log(sortIt([[4], [1], [3]]));
 console.log(sortIt([4, [1], 3]));
 console.log(sortIt([[4], 1, [3]]));
 console.log(sortIt([[3], 4, [2], [5], 1, 6]));
+
+// 11. No Hidden Fees
+console.log("11. No Hidden Fees");
+console.log(hasHiddenFee(["$2", "$4", "$1", "$8"], "$15"));
+console.log(hasHiddenFee(["$1", "$2", "$3"], "$6"));
+console.log(hasHiddenFee(["$1"], "$4"));
 
