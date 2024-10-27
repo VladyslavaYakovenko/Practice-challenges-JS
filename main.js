@@ -15,6 +15,8 @@ import hasHiddenFee from "./11.no-hidden-fees.js";
 import trace from "./12.trace-that-matrix.js";
 import removeSpecialCharacters from "./13.remove-special-characters.js";
 import mathExpr from "./14.check-if-string-is-math-expression.js";
+import pentagonal from "./15.pentagonal-number.js";
+import tempConversion from "./16.temparature-conversion.js";
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
@@ -157,4 +159,11 @@ console.log(pentagonal(1));
 console.log(pentagonal(2));
 console.log(pentagonal(3));
 console.log(pentagonal(8));
+
+// 16. Temperature Conversion
+console.log("16. Temperature Conversion");
+console.log(tempConversion(0));
+console.log(tempConversion(100));
+console.log(tempConversion(-10));
+console.log(tempConversion(300.4));
 
