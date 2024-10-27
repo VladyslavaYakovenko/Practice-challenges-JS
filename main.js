@@ -17,6 +17,8 @@ import removeSpecialCharacters from "./13.remove-special-characters.js";
 import mathExpr from "./14.check-if-string-is-math-expression.js";
 import pentagonal from "./15.pentagonal-number.js";
 import tempConversion from "./16.temparature-conversion.js";
+import missingLetter from "./17.whats-missing-letter.js";
+
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
@@ -167,3 +169,9 @@ console.log(tempConversion(100));
 console.log(tempConversion(-10));
 console.log(tempConversion(300.4));
 
+// 17. What's the Missing Letter?
+console.log("17. What's the Missing Letter?");
+console.log(missingLetter("abdefg"));
+console.log(missingLetter("mnopqs"));
+console.log(missingLetter("tuvxyz"));
+console.log(missingLetter("ghijklmno"));
