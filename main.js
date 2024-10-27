@@ -8,6 +8,9 @@ import {
 } from "./5.find-smallest-and-biggest-numbers.js";
 import findLargestNums from "./6.find-largest-numbers-in-group-of-array.js";
 import Calculator from "./7.simple-oop-calculator.js";
+import keysAndValues from "./8.objects-keys-and-values.js";
+import ascDesNone from "./9.lets-sort-tihs-array.js";
+import sortIt from "./10.sort-unsortable.js";
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
@@ -73,4 +76,32 @@ console.log(
     [9, 3, 6, 3],
   ])
 );
+
+// 7. Simple OOP Calculator
+console.log("7. Simple OOP Calculator");
+const calculator = new Calculator();
+console.log(calculator.add(10, 5));
+console.log(calculator.subtract(10, 5));
+console.log(calculator.multiply(10, 5));
+console.log(calculator.divide(10, 5));
+
+// 8. Return the Objects Keys and Values
+console.log("8. Return the Objects Keys and Values");
+console.log(keysAndValues({ a: 1, b: 2, c: 3 }));
+console.log(keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" }));
+console.log(keysAndValues({ key1: true, key2: false, key3: undefined }));
+
+// 9. Let's Sort This Array!
+console.log("9. Let's Sort This Array!");
+console.log(ascDesNone([4, 3, 2, 1], "Asc"));
+console.log(ascDesNone([7, 8, 11, 66], "Des"));
+console.log(ascDesNone([1, 2, 3, 4], "None"));
+
+// 10. Sort the Unsortable
+console.log("10. Sort the Unsortable");
+console.log(sortIt([4, 1, 3]));
+console.log(sortIt([[4], [1], [3]]));
+console.log(sortIt([4, [1], 3]));
+console.log(sortIt([[4], 1, [3]]));
+console.log(sortIt([[3], 4, [2], [5], 1, 6]));
 
