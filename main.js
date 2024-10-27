@@ -7,6 +7,7 @@ import {
   minMaxAlternative,
 } from "./5.find-smallest-and-biggest-numbers.js";
 import findLargestNums from "./6.find-largest-numbers-in-group-of-array.js";
+import Calculator from "./7.simple-oop-calculator.js";
 // 1. How Much is True
 console.log("1. How much is true");
 console.log(countTrue([true, false, false, true, false]));
