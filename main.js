@@ -1,11 +1,8 @@
-import countTrue, { countTrueAlternative } from "./1.how-much-is-true.js";
+import countTrue from "./1.how-much-is-true.js";
 import jazzify from "./2.instant-jazz.js";
 import sortDescending from "./3.sort-numbers-in-desc-order.js";
 import sortByLength from "./4.sort-array-by-string-length.js";
-import {
-  minMax,
-  minMaxAlternative,
-} from "./5.find-smallest-and-biggest-numbers.js";
+import { minMax } from "./5.find-smallest-and-biggest-numbers.js";
 import findLargestNums from "./6.find-largest-numbers-in-group-of-array.js";
 import Calculator from "./7.simple-oop-calculator.js";
 import keysAndValues from "./8.objects-keys-and-values.js";
@@ -19,159 +16,216 @@ import pentagonal from "./15.pentagonal-number.js";
 import tempConversion from "./16.temparature-conversion.js";
 import missingLetter from "./17.whats-missing-letter.js";
 
-// 1. How Much is True
-console.log("1. How much is true");
-console.log(countTrue([true, false, false, true, false]));
-console.log(countTrue([false, false, false, false]));
-console.log(countTrue([]));
-console.log("Alternative:");
-console.log(countTrueAlternative([true, false, false, true, false]));
-console.log(countTrueAlternative([false, false, false, false]));
-console.log(countTrueAlternative([]));
+function printResult(config) {
+  const wrapper = document.createElement("div");
 
-// 2.Instant JAZZ
-console.log("2. Instant JAZZ");
-console.log(jazzify(["G", "F", "C"]));
-console.log(jazzify(["Dm", "G", "E", "A"]));
-console.log(jazzify(["F7", "E7", "A7", "Ab7", "Gm7", "C7"]));
-console.log(jazzify([]));
+  const title = document.createElement("h3");
+  title.textContent = config.title;
 
-// 3. Sort Numbers in Descending Order
-console.log("3. Sort Numbers in Descending Order");
-console.log(sortDescending(123));
-console.log(sortDescending(1254859723));
-console.log(sortDescending(73065));
+  const description = document.createElement("p");
+  description.textContent = config.description;
 
-// 4. Sort an Array by String Length
-console.log("4. Sort an Array by String Length");
-console.log(sortByLength(["Google", "Apple", "Microsoft"]));
-console.log(sortByLength(["Leonardo", "Michelangelo", "Raphael", "Donatello"]));
-console.log(sortByLength(["Turing", "Einstein", "Jung"]));
+  const ul = document.createElement("ul");
 
-// 5. Find the Smallest and Biggest Numbers
-console.log("5. Find the Smallest and Biggest Numbers");
-console.log(minMax([1, 2, 3, 4, 5]));
-console.log(minMax([2334454, 5]));
-console.log(minMax([1]));
+  config.params.forEach((param) => {
+    const elem = document.createElement("li");
 
-// OR:
-console.log(minMaxAlternative([1, 2, 3, 4, 5]));
-console.log(minMaxAlternative([2334454, 5]));
-console.log(minMaxAlternative([1]));
+    elem.textContent = config.method(param) ?? "Empty Result";
 
-// 6. Find the Largest Numbers in a Group of Arrays
-console.log("6. Find the Largest Numbers in a Group of Arrays");
-console.log(
-  findLargestNums([
-    [4, 2, 7, 1],
-    [20, 70, 40, 90],
-    [1, 2, 0],
-  ])
-);
+    ul.appendChild(elem);
+  });
 
-console.log(
-  findLargestNums([
-    [-34, -54, -74],
-    [-32, -2, -65],
-    [-54, 7, -43],
-  ])
-);
+  wrapper.appendChild(title);
+  wrapper.appendChild(description);
+  wrapper.appendChild(ul);
+  document.body.appendChild(wrapper);
+}
 
-console.log(
-  findLargestNums([
-    [0.4321, 0.7634, 0.652],
-    [1.324, 9.32, 2.5423, 6.4314],
-    [9, 3, 6, 3],
-  ])
-);
+window.onload = () => {
+  const calculator = new Calculator();
 
-// 7. Simple OOP Calculator
-console.log("7. Simple OOP Calculator");
-const calculator = new Calculator();
-console.log(calculator.add(10, 5));
-console.log(calculator.subtract(10, 5));
-console.log(calculator.multiply(10, 5));
-console.log(calculator.divide(10, 5));
+  const allResults = [
+    {
+      title: "How much is true?",
+      description:
+        "Create a function which returns the number of true values there are in an array.",
+      method: (p) => countTrue(p),
+      params: [
+        [true, false, false, true, false],
+        [false, false, false, false],
+        [],
+      ],
+    },
+    {
+      title: "Instant JAZZ",
+      description:
+        "Create a function which concatenates the number 7 to the end of every chord in an array. Ignore all chords which already end with 7.",
+      method: (p) => jazzify(p),
+      params: [
+        ["G", "F", "C"],
+        ["Dm", "G", "E", "A"],
+        ["F7", "E7", "A7", "Ab7", "Gm7", "C7"],
+        [],
+      ],
+    },
+    {
+      title: "Sort Numbers in Descending Order",
+      description:
+        "Create a function that takes any nonnegative number as an argument and returns it with it's digits in descending order. Descending order is when you sort from highest to lowest.",
+      method: (p) => sortDescending(p),
+      params: [123, 1254859723, 73065],
+    },
+    {
+      title: "Sort an Array by String Length",
+      description:
+        "Create a function that takes an array of strings and return an array, sorted from shortest to longest.",
+      method: (p) => sortByLength(p),
+      params: [
+        ["Google", "Apple", "Microsoft"],
+        ["Leonardo", "Michelangelo", "Raphael", "Donatello"],
+        ["Turing", "Einstein", "Jung"],
+      ],
+    },
+    {
+      title: "Find the Smallest and Biggest Numbers",
+      description:
+        "Create a function that takes an array of numbers and return both the minimum and maximum numbers, in that order.",
+      method: (p) => minMax(p),
+      params: [[1, 2, 3, 4, 5], [2334454, 5], [1]],
+    },
+    {
+      title: "Find the Largest Numbers in a Group of Arrays",
+      description:
+        "Create a function that takes an array of arrays with numbers. Return a new (single) array with the largest numbers of each.",
+      method: (p) => findLargestNums(p),
+      params: [
+        [
+          [4, 2, 7, 1],
+          [20, 70, 40, 90],
+          [1, 2, 0],
+        ],
+        [
+          [-34, -54, -74],
+          [-32, -2, -65],
+          [-54, 7, -43],
+        ],
+        [
+          [0.4321, 0.7634, 0.652],
+          [1.324, 9.32, 2.5423, 6.4314],
+          [9, 3, 6, 3],
+        ],
+      ],
+    },
+    {
+      title: "Return the Objects Keys and Values",
+      description:
+        "Create a function that takes an object and returns the keys and values as separate arrays. Return the keys sorted alphabetically, and their corresponding values in the same order.",
+      method: (p) => keysAndValues(p),
+      params: [
+        { a: 1, b: 2, c: 3 },
+        { a: "Apple", b: "Microsoft", c: "Google" },
+        { key1: true, key2: false, key3: undefined },
+      ],
+    },
+    {
+      title: "Let's Sort This Array!",
+      description:
+        "Create a function that takes an array of numbers arr, a string str and return an array of numbers",
+      method: (p) => ascDesNone(...p),
+      params: [
+        [[4, 3, 2, 1], "Asc"],
+        [[7, 8, 11, 66], "Des"],
+        [[1, 2, 3, 4], "None"],
+      ],
+    },
+    {
+      title: "Sort the Unsortable",
+      description: "Tries to sort arrays of arrays by first element",
+      method: (p) => sortIt(p),
+      params: [
+        [4, 1, 3],
+        [[4], [1], [3]],
+        [4, [1], 3],
+        [[4], 1, [3]],
+        [[4], 1, [3]],
+        [[3], 4, [2], [5], 1, 6],
+      ],
+    },
+    {
+      title: "No Hidden Fees",
+      description:
+        "Given an array of prices and a supposed total, return true if there is a hidden fee added to the total (i.e. the total is greater than the sum of prices), otherwise return false.",
+      method: (p) => hasHiddenFee(...p),
+      params: [
+        [["$2", "$4", "$1", "$8"], "$15"],
+        [["$1", "$2", "$3"], "$6"],
+        [["$1"], "$4"],
+      ],
+    },
+    {
+      title: "Trace That Matrix",
+      description:
+        "Given a square matrix (i.e. same number of rows as columns), its trace is the sum of the entries in the main diagonal (i.e. the diagonal line from the top left to the bottom right).",
+      method: (p) => trace(p),
+      params: [
+        [
+          [1, 4],
+          [4, 1],
+        ],
+        [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9],
+        ],
+        [
+          [1, 0, 1, 0],
+          [0, 2, 0, 2],
+          [3, 0, 3, 0],
+          [0, 4, 0, 4],
+        ],
+      ],
+    },
+    {
+      title: "Remove the Special Characters from a String (use RegExp)",
+      description: `Create a function that takes a string, removes all "special" characters
+       e.g. ., !, @, #, $, %, ^, &, \, *, (, )
+       and returns the new string. The only non-alphanumeric characters allowed are dashes -, underscores _ and spaces.`,
+      method: (p) => removeSpecialCharacters(p),
+      params: [
+        "The quick brown fox!",
+        "%fd76$fd(-)6GvKlO.",
+        "D0n$c sed 0di0 du1",
+      ],
+    },
+    {
+      title: "Check if a String is a Mathematical Expression (use RegExp)",
+      description: `Create a function that takes an input (e.g. "5 + 4") and returns true if it's a mathematical expression or false if not.`,
+      method: (p) => mathExpr(p),
+      params: ["4 + 5", "4*6", "4*no"],
+    },
+    {
+      title: "Pentagonal Number",
+      description: "Check if number is pentagonal",
+      method: (p) => pentagonal(p),
+      params: [1, 2, 3, 8],
+    },
+    {
+      title: "Temperature Conversion",
+      description:
+        "Write a program that takes a temperature input in celsius and converts it to Fahrenheit and Kelvin. Return the converted temperature values in an array.",
+      method: (p) => tempConversion(p),
+      params: [0, 100, -10, 300.4],
+    },
+    {
+      title: "What's the Missing Letter?",
+      description:
+        "Given a string of letters in the English alphabet, return the letter that's missing from the string. The missing letter will make the string be in alphabetical order (from A to Z).",
+      method: (p) => missingLetter(p),
+      params: ["abdefg", "mnopqs", "tuvxyz", "ghijklmno"],
+    },
+  ];
 
-// 8. Return the Objects Keys and Values
-console.log("8. Return the Objects Keys and Values");
-console.log(keysAndValues({ a: 1, b: 2, c: 3 }));
-console.log(keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" }));
-console.log(keysAndValues({ key1: true, key2: false, key3: undefined }));
-
-// 9. Let's Sort This Array!
-console.log("9. Let's Sort This Array!");
-console.log(ascDesNone([4, 3, 2, 1], "Asc"));
-console.log(ascDesNone([7, 8, 11, 66], "Des"));
-console.log(ascDesNone([1, 2, 3, 4], "None"));
-
-// 10. Sort the Unsortable
-console.log("10. Sort the Unsortable");
-console.log(sortIt([4, 1, 3]));
-console.log(sortIt([[4], [1], [3]]));
-console.log(sortIt([4, [1], 3]));
-console.log(sortIt([[4], 1, [3]]));
-console.log(sortIt([[3], 4, [2], [5], 1, 6]));
-
-// 11. No Hidden Fees
-console.log("11. No Hidden Fees");
-console.log(hasHiddenFee(["$2", "$4", "$1", "$8"], "$15"));
-console.log(hasHiddenFee(["$1", "$2", "$3"], "$6"));
-console.log(hasHiddenFee(["$1"], "$4"));
-
-// 12. Trace That Matrix
-console.log("12. Trace That Matrix");
-console.log(
-  trace([
-    [1, 4],
-    [4, 1],
-  ])
-);
-console.log(
-  trace([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-  ])
-);
-console.log(
-  trace([
-    [1, 0, 1, 0],
-    [0, 2, 0, 2],
-    [3, 0, 3, 0],
-    [0, 4, 0, 4],
-  ])
-);
-
-// 13. Remove the Special Characters from a String (use RegExp)
-console.log("13. Remove the Special Characters from a String (use RegExp)");
-console.log(removeSpecialCharacters("The quick brown fox!"));
-console.log(removeSpecialCharacters("%fd76$fd(-)6GvKlO."));
-console.log(removeSpecialCharacters("D0n$c sed 0di0 du1"));
-
-// 14. Check if a String is a Mathematical Expression (use RegExp)
-console.log("14. Check if a String is a Mathematical Expression (use RegExp");
-console.log(mathExpr("4 + 5"));
-console.log(mathExpr("4*6"));
-console.log(mathExpr("4*no"));
-
-// 15. Pentagonal Number
-console.log("15. Pentagonal Number");
-console.log(pentagonal(1));
-console.log(pentagonal(2));
-console.log(pentagonal(3));
-console.log(pentagonal(8));
-
-// 16. Temperature Conversion
-console.log("16. Temperature Conversion");
-console.log(tempConversion(0));
-console.log(tempConversion(100));
-console.log(tempConversion(-10));
-console.log(tempConversion(300.4));
-
-// 17. What's the Missing Letter?
-console.log("17. What's the Missing Letter?");
-console.log(missingLetter("abdefg"));
-console.log(missingLetter("mnopqs"));
-console.log(missingLetter("tuvxyz"));
-console.log(missingLetter("ghijklmno"));
+  allResults.forEach((config) => {
+    printResult(config);
+  });
+};

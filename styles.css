@@ -1,0 +1,12 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+div {
+  padding: 12px;
+  border: 1px solid #706464;
+  border-radius: 12px;
+  background: #e0e0e0;
+}
